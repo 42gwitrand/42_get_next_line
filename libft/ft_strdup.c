@@ -5,19 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwitrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 10:50:21 by gwitrand          #+#    #+#             */
-/*   Updated: 2017/11/11 10:50:23 by gwitrand         ###   ########.fr       */
+/*   Created: 2017/12/02 12:41:21 by gwitrand          #+#    #+#             */
+/*   Updated: 2017/12/02 12:41:23 by gwitrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+char		*ft_strdup(const char *str)
 {
-	char	*tmp;
+	int		len;
+	int		i;
+	char	*str_mal;
 
-	tmp = ft_strnew(ft_strlen(str));
-	if (tmp)
-		ft_strcpy(tmp, str);
-	return (tmp);
+	len = ft_strlen(str);
+	i = -1;
+	if (!(str_mal = (char*)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	while (i++ < len)
+		str_mal[i] = str[i];
+	return (str_mal);
 }

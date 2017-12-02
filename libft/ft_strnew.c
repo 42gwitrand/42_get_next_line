@@ -5,14 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwitrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 10:52:28 by gwitrand          #+#    #+#             */
-/*   Updated: 2017/11/11 10:52:30 by gwitrand         ###   ########.fr       */
+/*   Created: 2017/12/02 12:41:12 by gwitrand          #+#    #+#             */
+/*   Updated: 2017/12/02 12:41:15 by gwitrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strnew(size_t size)
 {
-	return (ft_memalloc(size + 1));
+	char	*str;
+
+	if (!(str = (char*)malloc(sizeof(*str) * size + 1)))
+		return (0);
+	str[size] = '\0';
+	while (size > 0)
+		str[size-- - 1] = '\0';
+	return (str);
 }
